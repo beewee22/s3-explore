@@ -3,13 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
-    "next": "10.x",
+    "@aws-sdk/client-dynamodb": "^3.20.0",
+    "@aws-sdk/client-ec2": "^3.20.0",
+    "@aws-sdk/client-s3": "^3.20.0",
+    "@chakra-ui/react": "^1.6.4",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@types/node": "^16.0.0",
+    "@types/react": "^17.0.13",
+    "eslint-plugin-prettier": "^3.4.0",
+    "framer-motion": "^4",
+    "next": "11.x",
+    "rc-table": "^7.17.0",
     "react": "17.x",
-    "react-dom": "17.x"
+    "react-dom": "17.x",
+    "recoil": "^0.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5"
   }
 }
