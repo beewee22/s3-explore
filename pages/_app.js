@@ -1,7 +1,27 @@
-import '../styles/globals.css'
+import { useEffect } from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import { RecoilRoot, useRecoilSnapshot } from 'recoil';
 
+function DebugObserver() {
+  const snapshot = useRecoilSnapshot();
+  useEffect(() => {
+    console.debug('The following atoms were modified:');
+    for (const node of snapshot.getNodes_UNSTABLE({ isModified: true })) {
+      console.debug(node.key, snapshot.getLoadable(node));
+    }
+  }, [snapshot]);
+
+  return null;
+}
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <RecoilRoot>
+      <DebugObserver />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </RecoilRoot>
+  );
 }
 
-export default MyApp
+export default MyApp;
